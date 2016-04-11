@@ -11,8 +11,8 @@ _k0 = np.array([1, 0], dtype=complex)
 _k0.shape = (2, 1)
 _k1 = np.array([0, 1], dtype=complex)
 _k1.shape = (2, 1)
-k0 = da.from_array(_k0, chunks=(10000,1))
-k1 = da.from_array(_k1, chunks=(10000,1))
+k0 = da.from_array(_k0, chunks=(10000, 1))
+k1 = da.from_array(_k1, chunks=(10000, 1))
 
 t0 = time.time()
 
@@ -26,7 +26,7 @@ for i in range(1, len(NUM) + 1):
     a.append(t)
     t = 0.0
 
-z1 = pCoeff*(k0+a[0]*k1)
+#  z1 = pCoeff*(k0+a[0]*k1)
 
 for i in a[1:]:
     z1 = da.kron(z1, pCoeff*(k0 + i*k1))

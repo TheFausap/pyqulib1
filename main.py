@@ -4,7 +4,7 @@ import scipy.sparse as sp
 import numpy as np
 import time
 
-NUM = bin(2333888)[2:]
+NUM = bin(233388831)[2:]
 NUM = NUM[::-1]  # reverse the input binary digits
 pCoeff = 1.0/math.sqrt(2)
 a = []
@@ -13,8 +13,8 @@ _k0 = np.array([1, 0], dtype=complex)
 _k0.shape = (2, 1)
 _k1 = np.array([0, 1], dtype=complex)
 _k1.shape = (2, 1)
-k0 = sp.coo_matrix(_k0)
-k1 = sp.coo_matrix(_k1)
+k0 = sp.csr_matrix(_k0)
+k1 = sp.csr_matrix(_k1)
 
 t0 = time.time()
 
@@ -28,12 +28,12 @@ for i in range(1, len(NUM) + 1):
     a.append(t)
     t = 0.0
 
-z1 = pCoeff*sp.coo_matrix(_k0+a[0]*_k1)
+z1 = pCoeff*sp.csr_matrix(_k0+a[0]*_k1)
 
 for i in a[1:]:
     z1 = sp.kron(z1, pCoeff*(k0 + i*k1))
 
-print("Elapsed: ", time.time()-t0)
+print("Elapsed: ", (time.time()-t0)/60, " mins")
 print("Number of input qubit: ", len(NUM))
 print("QUREG length: ", z1.shape[0])
 
