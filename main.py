@@ -4,7 +4,7 @@ import scipy.sparse as sp
 import numpy as np
 import time
 
-NUM = bin(233388831)[2:]
+NUM = bin(233388)[2:]
 NUM = NUM[::-1]  # reverse the input binary digits
 pCoeff = 1.0/math.sqrt(2)
 a = []

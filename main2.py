@@ -5,6 +5,7 @@ import numpy as np
 NUM = bin(2333888)[2:]
 NUM = NUM[::-1]  # reverse the input binary digits
 pCoeff = 1.0/math.sqrt(2)
+numbits = len(NUM)
 a = []
 t = 0.0
 _k0 = np.array([1, 0], dtype=complex)
